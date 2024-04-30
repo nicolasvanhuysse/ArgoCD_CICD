@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ArgoCD_CICD
+  name: argocdcicd
 spec:
   replicas: 3
   selector:
@@ -13,7 +13,7 @@ spec:
         app: ArgoCD_CICD_App
     spec:
       containers:
-      - name: ArgoCD_CICD_Conteneur
+      - name: argoconteneur
         image: yuumassj/argocdtest:latest
         ports:
         - containerPort: 80
