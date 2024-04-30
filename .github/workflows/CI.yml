@@ -23,14 +23,3 @@ jobs:
         run: |
           docker tag argocdtest ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:latest
-
-      - name: Trigger ArgoCD deployment
-        uses: ilackarms/argocd-notifications@master
-        env:
-          ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
-          ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
-          ARGOCD_APP: argocicd
-          ARGOCD_NAMESPACE: default
-          ARGOCD_PROJECT: default
-          ARGOCD_SYNC_OPTIONS: '{"prune":true}'
-          ARGOCD_MANIFEST_GENERATION: 'v1'
