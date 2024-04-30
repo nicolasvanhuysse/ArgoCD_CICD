@@ -21,5 +21,5 @@ jobs:
 
       - name: Tag and Push Docker image
         run: |
-          docker tag my-dotnet-app ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:latest
+          docker tag argocdtest ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:latest
