@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yuumassj/argocdtest
+  labels:
+    app: argocdtest
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: argocdtest
+  template:
+    metadata:
+      labels:
+        app: argocdtest
+    spec:
+      containers:
+      - name: argocdtest
+        image: argocdtest:latest
+        ports:
+        - containerPort: 80
