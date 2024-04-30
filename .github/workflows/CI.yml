@@ -14,13 +14,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:latest .
+        run: docker build -t argocdtest .
 
       - name: Log into Docker Hub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Tag and Push Docker image
         run: |
-          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:latest ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:latest
+          docker tag argocdtest ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}
+
+      - name: Checkout code for the update
+        uses: actions/checkout@v3
+        with:
+            ref: master
