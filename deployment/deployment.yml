@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yuumassj/argocdtest
-  labels:
-    app: argocdtest
+  name: ArgoCD_CICD
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: argocdtest
+      app: ArgoCD_CICD_App
   template:
     metadata:
       labels:
-        app: argocdtest
+        app: ArgoCD_CICD_App
     spec:
       containers:
-      - name: argocdtest
+      - name: ArgoCD_CICD_Conteneur
         image: yuumassj/argocdtest:latest
         ports:
         - containerPort: 80
