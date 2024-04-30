@@ -21,5 +21,5 @@ jobs:
 
       - name: Tag and Push Docker image
         run: |
-          docker tag argocdtest ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:tag
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:tag
+          docker tag argocdtest ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}
