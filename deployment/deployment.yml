@@ -1,18 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: argocdcicd
-  labels:
-    run: argocdcicd
+  name: argocdcicd-service
 spec:
-  type: NodePort
-  ports:
-  - port: 8080
-    targetPort: 80
-    protocol: TCP
-    name: http
   selector:
-    run: argocdcicd
+    app: ArgoCD_CICD_App
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+  type: ClusterIP
 
 ---
 
@@ -24,14 +21,14 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: argocdcicd
+      app: ArgoCD_CICD_App
   template:
     metadata:
       labels:
-        app: argocdcicd
+        app: ArgoCD_CICD_App
     spec:
       containers:
-      - name: argocdcicd
+      - name: argoconteneur
         image: yuumassj/argocdtest:latest
         ports:
         - containerPort: 80
