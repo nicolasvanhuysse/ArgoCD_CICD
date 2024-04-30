@@ -1,0 +1,25 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t my-dotnet-app .
+
+      - name: Log into Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Tag and Push Docker image
+        run: |
+          docker tag my-dotnet-app ${{ secrets.DOCKER_USERNAME }}/my-dotnet-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-dotnet-app:latest
