@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: argocdtest
-        image: argocdtest:latest
+        image: yuumassj/argocdtest:latest
         ports:
         - containerPort: 80
