@@ -21,10 +21,10 @@ jobs:
       - name: Push the Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}
 
-      - name: Checkout code for the update
-        uses: actions/checkout@v4
-        with:
-          ref: main
+      # - name: Checkout code for the update
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: main
       
       # - name: Update Deployment Image Tag
       #   run: |
