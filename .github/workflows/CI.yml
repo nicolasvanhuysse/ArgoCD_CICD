@@ -28,7 +28,7 @@ jobs:
       
       - name: Update Deployment Image Tag
         run: |
-          sed -i "s|${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:.*|${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}|g" ./deployment.yml
+          sed -i "s|${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:.*|${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}|g" ./deployment/deployment.yml
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add .
