@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA} .
@@ -22,7 +22,7 @@ jobs:
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/argocdtest:${GITHUB_SHA}
 
       - name: Checkout code for the update
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         with:
           ref: main
       
