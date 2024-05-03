@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: argocdcicd
-        image: yuumassj/argocdtest:214129b7c6fad4ee9f9518d1695ba806797d2b49
+        image: yuumassj/argocdtest:557dee7db8920c382249e3022b327bc29a690c82
         ports:
         - containerPort: 8080
